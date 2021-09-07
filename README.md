@@ -2,6 +2,8 @@
 
 These cloudformation templates enable you to deploy a highly availbile ghost blog with RDS and utilizing S3 as the backend static content store.
 
+PS: ALL Stacks are deployed OK but ghost blog does not work (503 Service Temporarily Unavailable) error
+
 ## Deployment instructions
 
 * Code is written in AWS cloudformation templates with yaml formatting
