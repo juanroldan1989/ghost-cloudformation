@@ -33,7 +33,7 @@ Resources:
   VPC:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/infrastructure/vpc.yaml 
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/infrastructure/vpc.yaml 
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         VpcCIDR:         10.190.0.0/16
@@ -45,7 +45,7 @@ Resources:
   SecurityGroups:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/infrastructure/security-groups.yaml 
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/infrastructure/security-groups.yaml 
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         VPC: !GetAtt VPC.Outputs.VPC
@@ -53,7 +53,7 @@ Resources:
   ALB:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/infrastructure/load-balancer.yaml
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/infrastructure/load-balancer.yaml
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         VPC: !GetAtt VPC.Outputs.VPC
@@ -64,7 +64,7 @@ Resources:
   S3:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/infrastructure/s3.yaml
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/infrastructure/s3.yaml
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         S3UserName: !Sub ${AWS::StackName}-s3-user
@@ -72,7 +72,7 @@ Resources:
   DB:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/infrastructure/database.yaml
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/infrastructure/database.yaml
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         DatabaseUsername: !Ref DatabaseUsername
@@ -84,7 +84,7 @@ Resources:
   ECS:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/infrastructure/ecs-cluster.yaml
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/infrastructure/ecs-cluster.yaml
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         InstanceType: t2.micro
@@ -97,7 +97,7 @@ Resources:
   GhostService:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: https://s3.amazonaws.com/ghost-service/service/ghost.yaml
+      TemplateURL: https://s3.amazonaws.com/ghost-cloudformation/service/ghost.yaml
       Parameters:
         VPC: !GetAtt VPC.Outputs.VPC
         Cluster: !GetAtt ECS.Outputs.Cluster

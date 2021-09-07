@@ -105,7 +105,7 @@ Resources:
             - Name: url
               Value: !Join ["", ["http://", !Ref GhostServiceUrl ]]
           Essential: true
-          Image: csumpter/aws-s3-ghost-blog:latest 
+          Image: 542979624611.dkr.ecr.us-east-1.amazonaws.com/ghost-on-aws-ecr:latest
           Memory: 128
           PortMappings:
             - ContainerPort: 2368

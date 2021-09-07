@@ -45,7 +45,7 @@ Resources:
         Ref: DBSubnetGroup
       MasterUsername: !Ref DatabaseUsername
       MasterUserPassword: !Ref DatabasePassword
-      AllocatedStorage: '20'
+      AllocatedStorage: '5'
       DBInstanceClass: db.t2.micro
       MultiAZ: true
       VPCSecurityGroups:
